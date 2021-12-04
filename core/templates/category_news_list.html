@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{% for article in page_obj %}
+		{% if forloop.first %}
+			{{ article.category.title }}
+		{% endif %}
+	{% endfor %}
+{% endblock title %}
+
+{% block content %}
+<div id="heading">
+	{% for article in articles %}
+		{% if forloop.first %}
+		<h1>{{ article.category.title }}</h1>
+		{% endif %}
+	{% endfor %}
+</div>
+
+<div class="row">
+
+	<!-- First Column -->
+    <div class="col-md-8" id="first_column">
+		<hr class="horizontal_line">
+		<span id="latest_item"> LATEST </span>
+		<hr class="horizontal_line">
+
+		{% for article in page_obj %}
+		<div class="row mt-4 mb-1 category_news">
+			<div class="col-md-5">
+				<a href="{{ article.get_absolute_url }}"><img src="{{ article.image.url }}" alt="{{ article.alternative_text }}"></a>
+			</div>
+			<div class="col-md-7" id="written_text">
+				<a href="{{ article.get_absolute_url }}">
+					<header>
+						<h3> {{ article.title }} </h3>
+						<small>By {{ article.author.first_name }} {{ article.author.last_name }}  <span class="ms-1">{{ article.get_date }}</span></small>
+					</header>
+					<p>{{ article.snippet }}</p>
+				</a>
+			</div>
+		</div>
+		<hr class="category_horizon">
+		{% endfor %}
+
+		<!-- Pagination  -->
+		<nav aria-label="Page navigation example" id="pagination">
+			<ul class="pagination justify-content-center">
+			  {% if page_obj.has_previous %}
+			  <li class="page-item">
+				<a class="page-link" href="?page=1" aria-label="Previous">
+				  <span aria-hidden="true">&laquo;</span>
+				</a>
+			  </li>
+			  <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+			  {% else %}
+			  <li class="page-item">
+				<a class="page-link" aria-disabled="true" aria-label="Previous">
+				  <span aria-hidden="true">&laquo;</span>
+				</a>
+			  </li>
+			  {% endif %}
+
+			  <li class="page-item"><a class="page-link bg-light">{{ page_obj.number }}</a></li>
+			  
+			  {% if page_obj.has_next %}
+			  <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}"> {{ page_obj.next_page_number }} </a></li>
+			  <li class="page-item">
+				<a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Next">
+				  <span aria-hidden="true">&raquo;</span>
+				</a>
+			  </li>
+			  {% else %}
+			  <li class="page-item">
+				<a class="page-link" aria-disabled="true" aria-label="Next">
+				  <span aria-hidden="true">&raquo;</span>
+				</a>
+			  </li>
+			  {% endif %}
+
+			</ul>
+		</nav>
+		<!-- Pagination End  -->
+      
+    </div>
+	<!-- First Column End -->
+
+	<!-- Second Column  -->
+	<div class="col-md-4" id="second_column">
+
+		<!-- Subscription Section  -->
+		<div id="subscription">
+			<hr class="horizon">
+			<i class="fa fa-envelope"></i>
+			<span>LIVE SCIENCE NEWSLETTER</span>
+			<hr class="horizon">
+
+			{% for content in contents %}
+				{% if forloop.first %}
+				<p class="caption"> {{ content.title }} </p>
+				{% endif %}
+			{% endfor %}
+
+			<div class="form-group">
+				<form method="post">
+					{% csrf_token %}
+					{{ subscription_form }}
+					<button type="submit" class="btn btn-secondary form-control">Subscribe</button>
+				</form>
+			</div>
+
+			{% for content in contents %}
+				{% if forloop.first %}
+				<p class="privacy"> {{ content.subtitle }} </p>
+				{% endif %}
+			{% endfor %}
+
+			<hr class="horizon">
+		</div>
+		<!-- Subscription Section End  -->
+	
+		<!-- Side Content  -->
+		<div id="side_content">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item">
+				<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">MOST READ</a>
+				</li>
+				<li class="nav-item">
+				<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">MOST SHARED</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+					
+					{% for article in most_read_articles %}
+						{% if forloop.first %}
+						<div class="first_headline">
+							<a href="{{ article.get_absolute_url }}">
+								<img src="{{ article.image.url }}" alt="{{ article.alternative_text }}">
+								<div class="row first_headline_text">  
+									<div class="col-1 number">1</div> 
+									<div class="col-11 caption">
+										<figcaption> {{ article.title }} </figcaption>
+									</div>
+								</div>
+							</a>
+						</div>
+						{% endif %}
+					{% endfor %}
+	
+					{% for article in most_read_articles %}
+						{% if forloop.counter > 1 and forloop.counter < 6 %}
+						<div class="row headline">  
+							<div class="col-1 number"> {{ forloop.counter }} </div> 
+							<div class="col-11 caption">
+								<a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+							</div>
+						</div>
+						<hr> 
+						{% endif %}
+					{% endfor %}
+	
+				</div>
+				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+					
+					{% for article in most_shared_articles %}
+						{% if forloop.first %}
+						<div class="first_headline">
+							<a href="{{ article.get_absolute_url }}">
+								<img src="{{ article.image.url }}" alt="{{ article.alternative_text }}">
+								<div class="row first_headline_text">  
+									<div class="col-1 number">1</div> 
+									<div class="col-11 caption">
+										<figcaption> {{ article.title }} </figcaption>
+									</div>
+								</div>
+							</a>
+						</div>
+						{% endif %}
+					{% endfor %}
+	
+					{% for article in most_shared_articles %}
+						{% if forloop.counter > 1 and forloop.counter < 6 %}
+						<div class="row headline">  
+							<div class="col-1 number"> {{ forloop.counter }} </div> 
+							<div class="col-11 caption">
+								<a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+							</div>
+						</div>
+						<hr> 
+						{% endif %}
+					{% endfor %}
+	
+				</div>
+			</div>
+		</div>
+		<!-- Side Content End  -->
+	
+	</div>
+	<!-- Second Column End  -->
+
+</div>
+{% endblock content %}
+
+
+

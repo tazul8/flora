@@ -1,0 +1,228 @@
+#heading {
+    margin-bottom: 26px;
+}
+#heading h1 {
+    font-weight: 600;
+    font-size: 24px;
+    text-transform: capitalize;
+}
+
+#first_column {
+    padding-right: 20px;
+}
+.horizontal_line:not([size]) {
+    height: 3px;
+}
+.horizontal_line {
+    background-color: #1B5E20;
+}
+#latest_item {
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.category_news div a {
+	color: #333333;
+	text-decoration: none;
+}
+.category_news div a:hover {
+	text-decoration: none;
+	cursor: pointer;
+}
+.category_news div img {
+    height: 140px;
+	width: 100%;
+}
+#written_text {
+    padding-left: 7px;
+}
+.category_news div header {
+	margin-bottom: 6px;
+}
+.category_news div header h3 {
+	font-weight: 600;
+	font-size: 20px;
+}
+.category_news a:hover header h3 {
+	color: #1B5E20;
+}
+.category_news div header small {
+    font-size: 14px;
+	font-weight: 100;
+	margin-top: 9px;
+}
+.category_news div p {
+	font-weight: initial; 
+	font-size: 17px;
+    line-height: 1.375;
+}
+.category_horizon {
+    background-color: #000
+}
+@media screen and (max-width: 767px) {
+    .category_news div header {
+        padding-top: 18px;
+    }
+}
+
+#pagination {
+    margin-top: 22px;
+}
+#pagination ul li {
+    padding-left: 6px;
+}
+#pagination ul li a {
+	color: #1B5E20;
+    border: 0;
+	text-decoration: none;
+    font-size: 17px;
+	font-weight: 300;
+}
+
+#second_column {
+    padding-left: 20px;
+}
+#subscription .horizon {
+    height: 2px;
+}
+#subscription i {
+    font-size: 25px;
+    color: #AED581;
+    margin-right: 10px;
+    vertical-align: sub;
+}
+#subscription span {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+#subscription .caption {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+#subscription .privacy {
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 200;
+}
+#subscription form button {
+    background-color: #AED581;
+}
+@media screen and (max-width: 767px) {
+    #second_column {
+        margin-top: 30px;
+    }
+}
+@media screen and (max-width: 1095px) and (min-width: 900px) {
+    #subscription i {
+        font-size: 23px;
+        margin-right: 7px;
+    }
+    #subscription span {
+        font-size: 14px;
+        letter-spacing: normal;
+    }
+}
+@media screen and (max-width: 899px) and (min-width: 768px) {
+    #subscription i {
+        font-size: 21px;
+        margin-right: 5px;
+    }
+    #subscription span {
+        font-size: 12px;
+        letter-spacing: normal;
+    }
+}
+
+#side_content {
+    margin-top: 70px;
+}
+#side_content ul li {
+    background-color: #C5E1A5;
+    border: 3px solid #C5E1A5;
+    border-radius: 2px;
+}
+#side_content ul li a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #595959;
+    text-transform: uppercase;
+}
+#side_content div div .first_headline {
+    margin-bottom: 16px;
+}
+#side_content div div .first_headline a {
+	text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+#side_content div div div img {
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+}
+#side_content div div div .first_headline_text {
+    background-color: #212121;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#side_content div div .first_headline a:hover .first_headline_text {
+	background-color: #1B1B1B;
+}
+#side_content div div .first_headline figcaption {
+	height: 80px;
+	color: #FFF;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 1.375;
+	overflow: hidden;
+}
+#side_content div div .first_headline a:hover figcaption {
+	color: #1B5E20;
+}
+#side_content div div .headline {
+    margin-top: -6px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#side_content div div div .number {
+    font-size: 27px;
+    color: #999;
+    font-weight: 100;
+    text-align: center;
+}
+#side_content div div div .caption {
+    margin-top: 5px;
+}
+#side_content div div div .caption a {
+    color: #333333;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.375;
+}
+#side_content div div div .caption a:hover {
+    color: #1B5E20;
+    cursor: pointer;
+}
+@media screen and (max-width: 1075px) and (min-width: 976px) {
+    #side_content ul li a {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 975px) and (min-width: 876px) {
+    #side_content ul li a {
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 875px) and (min-width: 768px) {
+    #side_content ul li a {
+        font-size: 8px;
+    }
+}
+
+
+

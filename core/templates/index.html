@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% block title %} Flora {% endblock title %}
+
+{% block content %}
+<!-- First Row -->	
+<div class="row" id="first_row">
+	<div class="col-lg-8 first_column">
+		{% for article in interesting_articles %}
+			{% if forloop.first %}
+			<a href="{{ article.get_absolute_url }}">
+				<img src="{{ article.image.url }}" alt="{{ article.alternative_text }}">
+				<figcaption>{{ article.title }}</figcaption>    
+			</a>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+	<div class="col-lg-4 second_column">
+		<hr class="horizontal_rule">
+		<span> LATEST NEWS </span>
+		<hr class="horizontal_rule">
+
+		{% for article in articles %}
+			{% if forloop.counter < 4 %}
+			<h3><a href="{{ article.get_absolute_url }}"> {{ article.title }} </a></h3>
+			<hr>
+			{% endif %}
+		{% endfor %}
+
+		{% for article in articles %}
+			{% if forloop.counter == 4 %}
+			<h5><a href="{{ article.get_absolute_url }}"> {{ article.title }} </a></h5>
+			{% endif %}
+		{% endfor %}
+
+	</div>
+</div>			
+<!-- First Row End  -->
+
+<!-- Second Row  -->
+<div class="row" id="second_row">
+	{% for article in mysterious_articles %}
+		{% if forloop.counter < 4 %}
+		<div class="col-12 col-md-4">
+			<a href="{{ article.get_absolute_url }}">
+				<img src="{{ article.image.url }}" alt="{{ article.alternative_text }}">
+				<figcaption>{{ article.title }}</figcaption> 
+			</a>
+		</div>
+		{% endif %}
+	{% endfor %}
+</div>
+<!-- Second Row End  -->
+
+<!-- Third Row  -->
+<div class="row" id="third_row"> 
+	{% for article in interesting_articles %}
+		{% if forloop.counter == 2 or forloop.counter == 3 %}
+		<div class="col-12 col-md-6">
+			<a href="{{ article.get_absolute_url }}">
+				<img src="{{ article.image.url }}" alt="{{ article.alternative_text }}">
+				<figcaption>{{ article.title }}</figcaption>
+			</a>
+		</div>
+		{% endif %}
+	{% endfor %}
+</div>
+<!-- Third Row End  -->
+
+<!-- Flower Section  -->
+<div class="category">
+	<hr>
+		<span> FLOWER </span> 			
+		<a href="/category-news-list/flower/" class="float-right">
+			<small>VIEW MORE</small>
+			<i class="fa fa-arrow-right"></i>
+		</a>	  		
+	<hr>
+</div>
+
+<div class="row category_items">
+	{% for article in flower_articles %}
+		{% if forloop.counter < 4 %}
+		<div class="col-md-4">
+			<a href="{{ article.get_absolute_url }}">
+				<img src="{{ article.image.url }}" alt="{{ article.alternative_text }}">
+				<header>
+					<h3> {{ article.title }} </h3>
+					<small>By {{ article.author.first_name }} {{ article.author.last_name }}  <span class="ms-1">{{ article.get_date }}</span></small>
+				</header>
+				<p> {{ article.snippet }} </p>
+			</a>
+		</div>
+		{% endif %}
+	{% endfor %}
+</div>
+<!-- Flower Section End  -->
+
+<!-- Fruit Section  -->
+<div class="category">
+	<hr>
+		<span> FRUIT </span> 			
+		<a href="/category-news-list/fruit/" class="float-right">
+			<small>VIEW MORE</small>
+			<i class="fa fa-arrow-right"></i>
+		</a>	  		
+	<hr>
+</div>
+
+<div class="row category_items">
+	{% for article in fruit_articles %}
+		{% if forloop.counter < 4 %}
+		<div class="col-md-4">
+			<a href="{{ article.get_absolute_url }}">
+				<img src="{{ article.image.url }}" alt="{{ article.alternative_text }}">
+				<header>
+					<h3>{{ article.title }}</h3>
+					<small>By {{ article.author.first_name }} {{ article.author.last_name }}  <span class="ms-1">{{ article.get_date }}</span></small>
+				</header>
+				<p>{{ article.snippet }}</p>
+			</a>
+		</div>
+		{% endif %}
+	{% endfor %}
+</div>
+<!-- Fruit Section End  -->
+
+<!-- Vegetable Section  -->
+<div class="category">
+	<hr>
+		<span> VEGETABLE </span> 			
+		<a href="/category-news-list/vegetable/" class="float-right">
+			<small>VIEW MORE</small>
+			<i class="fa fa-arrow-right"></i>
+		</a>	  		
+	<hr>
+</div>
+
+<div class="row category_items">
+	{% for article in vegetable_articles %}
+		{% if forloop.counter < 4 %}
+		<div class="col-md-4">
+			<a href="{{ article.get_absolute_url }}">
+				<img src="{{ article.image.url }}" alt="{{ article.alternative_text }}">
+				<header>
+					<h3> {{ article.title }} </h3>
+					<small>By {{ article.author.first_name }} {{ article.author.last_name }}  <span class="ms-1">{{ article.get_date }}</span></small>
+				</header>
+				<p> {{ article.snippet }} </p>
+			</a>
+		</div>
+		{% endif %}
+	{% endfor %}
+</div>
+<!-- Vegetable Section End  -->
+
+<!-- Spice Section  -->
+<div class="category">
+	<hr>
+		<span> SPICE </span> 			
+		<a href="/category-news-list/spice/" class="float-right">
+			<small>VIEW MORE</small>
+			<i class="fa fa-arrow-right"></i>
+		</a>	  		
+	<hr>
+</div>
+
+<div class="row category_items">
+	{% for article in spice_articles %}
+		{% if forloop.counter < 4 %}
+		<div class="col-md-4">
+			<a href="{{ article.get_absolute_url }}">
+				<img src="{{ article.image.url }}" alt="{{ article.alternative_text }}">
+				<header>
+					<h3> {{ article.title }} </h3>
+					<small>By {{ article.author.first_name }} {{ article.author.last_name }}  <span class="ms-1">{{ article.get_date }}</span></small>
+				</header>
+				<p> {{ article.snippet }} </p>
+			</a>
+		</div>
+		{% endif %}
+	{% endfor %}
+</div>
+<!-- Spice Section End  -->
+
+<!-- Herb Section  -->
+<div class="category">
+	<hr>
+		<span> HERB </span> 			
+		<a href="/category-news-list/herb/" class="float-right">
+			<small>VIEW MORE</small>
+			<i class="fa fa-arrow-right"></i>
+		</a>	  		
+	<hr>
+</div>
+
+<div class="row category_items">
+	{% for article in herb_articles %}
+		{% if forloop.counter < 4 %}
+		<div class="col-md-4">
+			<a href="{{ article.get_absolute_url }}">
+				<img src="{{ article.image.url }}" alt="{{ article.alternative_text }}">
+				<header>
+					<h3> {{ article.title }} </h3>
+					<small>By {{ article.author.first_name }} {{ article.author.last_name }}  <span class="ms-1">{{ article.get_date }}</span></small>
+				</header>
+				<p> {{ article.snippet }} </p>
+			</a>
+		</div>
+		{% endif %}
+	{% endfor %}
+</div>
+<!-- Herb Section End  -->
+{% endblock content %}
+

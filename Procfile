@@ -1,0 +1,1 @@
+web: gunicorn flora.wsgi --log-file -

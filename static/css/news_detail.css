@@ -1,0 +1,104 @@
+#essay {
+	padding-right: 18px;
+}
+#essay h1 {
+	font-size: 27px;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+#essay small span {
+	margin-left: 6px;
+}
+#essay .image_section {
+	margin-top: 45px;
+}
+#essay .image_section img {
+	height: 415px;
+	width: 100%;
+}
+#essay .image_section p {
+	font-size: 13px;
+	font-weight: 100;
+	margin-top: 8px;
+}
+#essay .description {
+	margin-top: 33px;
+	margin-bottom: 90px;
+}
+#essay .comment_box {
+	margin-top: 20px;
+}
+#essay .comment_box h3 {
+	margin-bottom: 14px;
+	font-size: 26px;
+	font-weight: 500;
+}
+#essay .comment {
+	margin-top: 60px;
+}
+#essay .comment h6 {
+	font-size: 24px;
+	font-weight: 500;
+}
+#essay .comment div div div {
+	margin: 20px 0;
+}
+#essay .comment .reader_commented {
+	font-size: 20px;
+	font-weight: 400;
+}
+#essay .comment .date_commented {
+	font-size: 13px;
+	font-weight: 100;
+	margin-top: -10px;
+}
+#essay .comment .text_commented {
+	font-size: 18px;
+	font-weight: 400;
+	/* margin-bottom: 50px; */
+}
+
+#side_bar {
+	padding-left: 18px;
+}
+#side_bar h2 {
+	font-size: 23px;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+#side_bar hr {
+	background-color: rgba(0,0,0,.6);
+}
+#side_bar .sidebar_item .image_portion {
+	padding-right: 3px;
+}
+#side_bar .sidebar_item div img {
+	width: 100%;
+	height: 80px;
+}
+#side_bar .sidebar_item div .title {
+	color: #333333;
+	line-height: 1.375;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+#side_bar .sidebar_item div .title:hover {
+	color: #1B5E20;
+	cursor: pointer;
+}
+@media screen and (max-width: 767px) {
+	#side_bar {
+		margin-top: 30px;
+	}
+	#side_bar .sidebar_item .image_portion {
+		padding-right: 12px;
+		margin-bottom: 10px;
+	}
+}
+
+
+
+
+
+
+

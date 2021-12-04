@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+	{{ article.title }}
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+
+	<!-- First Column  -->
+	<div class="col-md-8" id="essay">
+		<h1> {{ article.title }} </h1>		       	        	
+		<small>By {{ article.author.first_name }} {{ article.author.last_name }} <span> {{ article.get_date }} </span></small>
+		
+		<div class="image_section">
+			<img src="{{ article.image.url }}" alt="{{ article.alternative_text }}"> 
+			<p> {{ article.image_caption }} </p>         		
+		</div>
+		
+		<div class="description"> {{ article.detail|safe }} </div>
+		
+		<hr>
+		<div class="comment_box">
+			{% if new_comment %}
+        	<div class="alert alert-success" role="alert">
+          		Your comment is awaiting moderation
+        	</div>
+        	{% else %}
+        	<h3>Leave a comment</h3>
+        	<form method="post" class="mt-4">
+				{% csrf_token %}
+				{{ comment_form|crispy }}
+          		<button type="submit" class="btn btn-secondary">Post comment</button>
+        	</form>
+        	{% endif %}
+		</div>
+
+		{% if comments %}
+		<div class="comment">
+
+			{% for comment in comments %}
+				{% if forloop.last %}
+				<h6>{{ forloop.counter }} comments</h6>
+				{% endif %}
+			{% endfor %}
+
+			{% for comment in comments %}
+				<div class="row">
+					<div class="col-1"></div>
+					<div class="col-11">
+						<div>
+							<p class="reader_commented">{{ comment.name }} says</p> 
+							<p class="date_commented"> {{ comment.created_on|date:"F d, Y" }} </p>
+						</div>
+						<p class="text_commented"> {{ comment.description|linebreaks }} </p>
+					</div>
+				</div>
+			{% endfor %}
+
+		</div>
+		{% endif %}
+		
+	</div>
+	<!-- First Column End  -->
+
+	<!-- Second Column  -->
+	<div class="col-md-4" id="side_bar">
+		<h2>Related news</h2>
+
+		{% for article in related_articles %}
+			{% if forloop.counter < 6 %}
+			<hr>
+			<div class="row sidebar_item">
+				<div class="col-md-4 image_portion">
+					<a href="{{ article.get_absolute_url }}"><img src="{{ article.image.url }}" alt="{{ article.alternative_text }}"></a>
+				</div>
+				<div class="col-md-8">
+					<a class="title" href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+				</div>
+			</div>
+			{% endif %}
+		{% empty %}
+			<p>Sorry, no interesting news related to this.</p>
+		{% endfor %}
+
+	</div>
+	<!-- Second Column End  -->
+
+</div>
+{% endblock content %}
