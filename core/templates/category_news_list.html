@@ -10,7 +10,7 @@
 
 {% block content %}
 <div id="heading">
-	{% for article in articles %}
+	{% for article in page_obj %}
 		{% if forloop.first %}
 		<h1>{{ article.category.title }}</h1>
 		{% endif %}
